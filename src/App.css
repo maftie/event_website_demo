@@ -1,0 +1,121 @@
+.App {
+  margin: auto;
+}
+
+.App-header {
+  background-color: #282c34;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  color: white;
+}
+
+.form {
+    margin: 10px auto;
+    padding: 20px 12px 10px 20px;
+    font: 13px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+.form li {
+  height: 5%; 
+  padding: 0;
+	display: block;
+	list-style: none;
+	margin: 5px 0 0 0;  
+}
+.form label{
+	margin:0 0 3px 0;
+	padding:0px;
+	display:block;
+	font-weight: bold;
+}
+
+.form input {
+    width: 50%;
+    box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border:1px solid #BEBEBE;
+	padding: 7px;
+	margin:0px;
+	outline: none;
+}
+
+.form textarea {
+  width: 50%;
+  height: 50px;
+}
+
+.individualRadio {
+  width: 15%;
+}
+
+.radio {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+img {
+  max-width: 300px;
+  max-height: 200px;
+  margin: auto;
+}
+
+.Event {
+  width: 53%;
+  margin: auto;
+}
+
+.CreateEventButton {
+  width: 100%;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.Events {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+}
+
+.EventPageContent {
+  width: 90%;
+  margin: auto;
+}
+
+.EventHeading {
+  text-align: center;
+  width: 100%;
+}
+
+.EventHeading h1 {
+  display: inline-block;
+}
+
+.Event div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.submit {
+  width:20% !important;
+}
+
+.TicketForm {
+  width: 100%;
+}
+
+.TicketForm li {
+  width: 49%
+}
+
+.TicketForm input {
+  width: 90%;
+}
