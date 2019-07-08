@@ -34,10 +34,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "node ./src/server/server.js",
     "client": "react-scripts start",
     "azure-build": "npm install && npm run build",
-    "start": "npm run azure-build && npm run server"
+    "start": "node ./src/server/server.js"
   },
   "eslintConfig": {
     "extends": "react-app"
