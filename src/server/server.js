@@ -1,12 +1,12 @@
-require('dotenv').config({path: './.env'});
+require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
-const port =
- process.env.PORT;
+const port = 3001;
 const user = process.env.USER;
 const pw = process.env.PW;
 const connection = 'mongodb+srv://' + user + ':'+ pw + '@cluster0-uxecs.azure.mongodb.net/eventbrite-website-demo?retryWrites=true&w=majority';
@@ -25,12 +25,15 @@ mongoose.connect(connection,
 );
 
 let routes = require('./routes');
+app.use(cors());
 app.use(routes);
 
-app.use(express.static('build'));
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static('build'));
 
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve('../../', 'build'));
-})
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve('../../', 'build'));
+    })
+}
 
 app.listen(port, () => console.log('Listening on port ' + port));

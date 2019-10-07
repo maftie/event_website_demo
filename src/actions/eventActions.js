@@ -1,6 +1,7 @@
 import { FETCH_EVENTS, NEW_EVENT, BUY_EVENT_TICKET, ERROR, CLEAR_EVENT_MESSAGE } from './types';
 
 export const fetchEvents = () => dispatch => {
+      console.log('trying to fetch')
       fetch('http://localhost:3001/api/getevents')
       .then(res => res.json())
       .then(events => dispatch({
@@ -8,6 +9,7 @@ export const fetchEvents = () => dispatch => {
           payload: events
       }))
       .catch(error => {
+        console.log(error)
         dispatch({
             type: ERROR,
             payload: error
