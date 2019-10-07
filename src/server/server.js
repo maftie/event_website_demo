@@ -15,14 +15,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
 require('./passport');
-
-mongoose.connect(connection, 
-    {useNewUrlParser: true, 'useCreateIndex': true}, 
-    (err) => {
-        if (err) throw err;
-        console.log('Connection successful');
-    }
-);
+try {
+    mongoose.connect(connection, 
+        {useNewUrlParser: true, 'useCreateIndex': true}, 
+        (err) => {
+            if (err) throw err;
+            console.log('Connection successful');
+        }
+    );
+}catch(err) {
+    console.log('Error: ' + err);
+}
 
 let routes = require('./routes');
 app.use(cors());

@@ -35,6 +35,7 @@ export const createEvent = (postData) => dispatch => {
         payload: post
         }))
       .catch(error => {
+        console.log(error);
         dispatch({
             type: ERROR,
             payload: 'Oops, something went wrong on our end, please try again later.'
