@@ -10,11 +10,12 @@ The best way to run this locally is to build this project into a docker image an
 docker run [name of your image here] -p 3001:3001
 ```
 
-You can attempt to run this via the start-prod command;
+You can attempt to run this via the start-prod script;
 
 ```
 npm run start-prod
 ```
+
 However, there appear to be compatability issues that I have not yet had a chance to explore depending on your version of Node.
 
 ## To-Do/Known Issues
