@@ -26,6 +26,8 @@ module.exports = async (req, res) => {
             ticketPrice: ticketPrice,
             ticketTotal:  ticketTotal
         });
+
+        console.log(event);
         event.save();
       
         res.status(201).json({

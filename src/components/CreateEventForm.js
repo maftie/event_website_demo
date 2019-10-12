@@ -7,9 +7,9 @@ import './createEventForm.css';
 
 export class CreateEventForm extends Component {
     handleChange = (event, eventName) => {
+        console.log('event name: ' + event.target.name + "\nevent target: " + event.target.value);
         this.setState({
-            [event.target.name]: event.target.value,
-            name: eventName
+            [event.target.name]: event.target.value
         })
     }
 
@@ -19,10 +19,10 @@ export class CreateEventForm extends Component {
     }
 
     state = {
-        name: "",
-        date: "",
-        imageLink: "",
-        description: "",
+        name: '',
+        date: '',
+        imageLink: '',
+        description: '',
         ticketPrice: 0,
         ticketTotal:  0
     }

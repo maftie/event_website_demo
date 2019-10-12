@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
       req.login(user, {session: false}, (err) => {
         if (err) {
           res.status(400).json({
-            success:false,
+            success: false,
             message: err
           });
         }

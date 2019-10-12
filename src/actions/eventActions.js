@@ -41,11 +41,12 @@ export const createEvent = (postData) => dispatch => {
             payload: 'Oops, something went wrong on our end, please try again later.'
         })
       })
+    }else{
+        dispatch({
+            type: ERROR,
+            payload: 'You\'re not logged in, or your log-in may have expired. Please log-in before re-attempting.'
+        })
     }
-    dispatch({
-        type: ERROR,
-        payload: 'You\'re not logged in, or your log-in may have expired. Please log-in before re-attempting.'
-    })
     
 }
 

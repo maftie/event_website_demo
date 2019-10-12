@@ -20,5 +20,6 @@ However, there appear to be compatability issues that I have not yet had a chanc
 
 ## To-Do/Known Issues
 
-- Fix Issue Regarding 422 Unprocessable Entity response when attempting to create an event
+- Clean up code
+- Style elements (maybe)
 - Deploy to Heroku
