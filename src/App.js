@@ -4,7 +4,7 @@ import store, {history} from './store';
 import { Route, Switch } from 'react-router';
 import { ConnectedRouter } from 'connected-react-router';
 
-import './App.css';
+import './sass/main.scss';
 
 import Events from './components/Events';
 import Header from './components/Header';
