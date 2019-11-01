@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { createEvent } from '../../actions/eventActions';
 import { push } from 'connected-react-router';
 import { clearUserMessage } from '../../actions/userActions';
-import './createEventForm.css';
 
 export class CreateEventForm extends Component {
     handleChange = (event, eventName) => {

@@ -5,8 +5,6 @@ import { clearUserMessage } from '../../actions/userActions';
 import { clearEventMessage } from '../../actions/eventActions';
 import { clearErrors } from '../../actions/errorActions';
 
-import './header.css';
-
 export class Header extends Component {
     componentWillReceiveProps() {
         console.log('new props: ' + JSON.stringify(this.props));      
