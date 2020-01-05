@@ -1,8 +1,9 @@
 @charset 'UTF-8';
 
-@import "base/_base";
-@import "components/components";
+@import "utilities/utilities";
+@import "themes/themes";
+@import "base/base";
 @import "layout/layout";
-@import "utilities/_utilities";
+@import "components/components";
 @import "pages/pages";
 @import "vendors/vendors";

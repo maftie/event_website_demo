@@ -7,10 +7,12 @@ const cors = require('cors');
 
 const app = express();
 const port = 3001;
-const user = process.env.USERNAME;
+const user = process.env.MONGO_USER;
 const pw = process.env.PW;
 const connection = 'mongodb+srv://' + user + ':'+ pw + '@cluster0-uxecs.azure.mongodb.net/eventbrite-website-demo?retryWrites=true&w=majority';
 
+console.log('user is ' + user + ' pw is ' + pw);
+console.log('connection is '  + connection);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
