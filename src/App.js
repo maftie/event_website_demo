@@ -16,18 +16,14 @@ function App() {
     <Provider store={ store }>
        
        <Router history={history}>
-       <div className="App">
          <Header />
-           <div className="Content">
-             <Switch>
-               <Route exact path="/" component= { Events } />
-               <Route exact path="/signup" component= { Signup } />
-               <Route exact path="/login" component= {Login} />
-               <Route exact path="/createEvent" component= {createEventForm} />
-               <Route render={() => (<div className='pageNotFound'>Oops, the page you were looking for could not be found.</div>)} />
-             </Switch>
-           </div>
-         </div>
+         <Switch>
+           <Route exact path="/" component= { Events } />
+           <Route exact path="/signup" component= { Signup } />
+           <Route exact path="/login" component= {Login} />
+           <Route exact path="/createEvent" component= {createEventForm} />
+           <Route render={() => (<div className='pageNotFound'>Oops, the page you were looking for could not be found.</div>)} />
+         </Switch>
       </Router>
     </Provider>
   );

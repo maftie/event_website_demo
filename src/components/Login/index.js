@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import {loginUser} from '../../actions/userActions'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import {loginUser} from '../../actions/userActions';
+import ValidateEmail from '../../helpers/validateEmail';
 
 export class Login extends Component {
     state = {
@@ -16,34 +17,53 @@ export class Login extends Component {
     
     handleSubmit = event => {
         event.preventDefault()
-        this.props.login(this.state)
+        if(ValidateEmail(this.state.email)) {
+          this.props.login(this.state)
+        } else {
+          this.props.throwError('Invalid email')
+        }
+        
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-              <ul className='form'>
-              <li><h1>Log In</h1></li><br/>
-              <li><label>Email</label>
-              <input
-                name='email'
-                placeholder='email'
-                value={this.state.email}
-                onChange={this.handleChange}
-              /></li><br/>
-              <li><label>Password</label>
-              <input
-                type='password'
-                name='password'
-                autoComplete="current-password"
-                placeholder='Password'
-                value={this.state.password}
-                onChange={this.handleChange}
-              /></li><br/>
-              <li><input className='submit' type='submit'/></li>
-              </ul>
-            </form>
-
+          <div className='container pt-4'>
+            <div className='row'>
+              <div className='col'>
+                <div className='form-group'>
+                  <h1>Log In</h1>
+                  <form>
+                    <div className='form-group'>
+                      <label htmlFor='email-field'>Email</label>
+                      <input
+                        className='form-control'
+                        id='email-field'
+                        type='email'
+                        name='email'
+                        placeholder='email'
+                        value={this.state.email}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                    <div className='form-group'>
+                      <label htmlFor='password-field'>Password</label>
+                      <input
+                        className='form-control'
+                        id='password-field'
+                        type='password'
+                        name='password'
+                        autoComplete="current-password"
+                        placeholder='Password'
+                        value={this.state.password}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                    <button type='submit' className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
         )
     }
 }

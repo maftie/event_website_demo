@@ -6,17 +6,18 @@ const User = require('../../models/User');
 module.exports = (req, res) => {    
     let email = req.body.email, password = req.body.password, organizer = req.body.organizer;
     try {
-        let emailQuery = User.find({email: email})
-        .then(()=>{
-            if(emailQuery.length >=1) {
+        User.findOne({ email: email })
+        .then((result)=>{
+            if(result) {
+                console.log('user already exists')
                 return res.status(422).json({
                     success: false,
                     message: 'Sorry, that email is already in use.'
                 })
             }
     
+            console.log('user ' + email + ' is unique. result of query is: ' + JSON.stringify(result))
             bcrypt.hash(password, 10, (err, pwHash) => {
-    
                 const user = new User ({
                     _id: new mongoose.Types.ObjectId(),
                     email: email,

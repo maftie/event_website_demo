@@ -30,7 +30,7 @@ export default function(state = initialState, action) {
         case USER_ERROR:
           return {
               ...state,
-              message: action.payload.message
+              error: action.payload.message
           }
       case CLEAR_MESSAGE: 
         return {

@@ -9,7 +9,7 @@ import NavItems from './navItemsComponent';
 
 export class Header extends Component {
     componentWillReceiveProps() {
-        console.log('new props: ' + JSON.stringify(this.props));      
+        console.log('new props for header: ' + JSON.stringify(this.props));      
     }
     render() {
         return (
