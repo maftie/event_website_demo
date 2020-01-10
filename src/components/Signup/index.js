@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import { newUser } from '../../actions/userActions';
 import { throwError } from '../../actions/errorActions';
-import ValidateEmail from '../../helpers/validateEmail';
+import { clearUserMessage } from '../../actions/userActions';
+import { clearEventMessage } from '../../actions/eventActions';
+import { clearErrors } from '../../actions/errorActions';
+
+import validateEmail from '../../helpers/validateEmail';
+import fieldsNotEmpty from '../../helpers/fieldsNotEmpty';
 
 export class Signup extends Component {
+    componentWillUnmount() {
+      this.props.clearMessages();
+    }
     state = {
         email: "",
         password: "",
@@ -19,10 +28,11 @@ export class Signup extends Component {
 
     handleSubmit = event => {
       event.preventDefault()
-      if(ValidateEmail(this.state.email)) {
-        this.props.newUser(this.state)
+      this.props.clearMessages();
+      if(!fieldsNotEmpty(this.state)) {
+        this.props.throwError('One or more fields is empty')
       } else {
-        this.props.throwError('Invalid email')
+        validateEmail(this.state.email) ? this.props.newUser(this.state) : this.props.throwError('Invalid email')
       }
     }
 
@@ -103,7 +113,12 @@ export class Signup extends Component {
 
 const mapDispatchToProps = dispatch => ({
     newUser: userInfo => dispatch(newUser(userInfo)),
-    throwError: error => dispatch(throwError(error))
+    throwError: error => dispatch(throwError(error)),
+    clearMessages: () => {
+      clearUserMessage(dispatch);
+      clearEventMessage(dispatch);
+      clearErrors(dispatch);
+    }
 })
 
 export default connect(null, mapDispatchToProps)(Signup);

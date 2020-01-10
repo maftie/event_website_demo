@@ -1,4 +1,4 @@
-import { USER_LOGIN, NEW_USER, CLEAR_MESSAGE, CLEAR_USER_DATA, USER_ERROR } from '../actions/types';
+import { USER_LOGIN, NEW_USER, CLEAR_MESSAGE, CLEAR_USER_DATA } from '../actions/types';
 
 const initialState = {
   email: 'placeholder',
@@ -27,11 +27,6 @@ export default function(state = initialState, action) {
             message: action.payload.message,
             organizer: action.payload.organizer
         }
-        case USER_ERROR:
-          return {
-              ...state,
-              error: action.payload.message
-          }
       case CLEAR_MESSAGE: 
         return {
             ...state,

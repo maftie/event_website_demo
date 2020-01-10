@@ -9,7 +9,7 @@ export default function(state = initialState, action) {
         case ERROR:
           return {
               ...state,
-              message: action.payload
+              message: action.payload.message ? action.payload.message : action.payload
           }
         case CLEAR_ERROR:
           return {

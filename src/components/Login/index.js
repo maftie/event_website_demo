@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import {loginUser} from '../../actions/userActions';
+import { clearUserMessage } from '../../actions/userActions';
+import { clearEventMessage } from '../../actions/eventActions';
+import { clearErrors } from '../../actions/errorActions';
+
 import ValidateEmail from '../../helpers/validateEmail';
 
 export class Login extends Component {
+    componentWillUnmount() {
+      this.props.clearMessages();
+    }
     state = {
         email: "",
         password: ""
@@ -69,7 +77,12 @@ export class Login extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    login: userData => dispatch(loginUser(userData))
+    login: userData => dispatch(loginUser(userData)),
+    clearMessages: () => {
+      clearUserMessage(dispatch);
+      clearEventMessage(dispatch);
+      clearErrors(dispatch);
+    }
 })
 
 export default connect(null, mapDispatchToProps)(Login)

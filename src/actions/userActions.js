@@ -1,4 +1,4 @@
-import{ USER_LOGIN, NEW_USER, USER_ERROR, ERROR, CLEAR_MESSAGE, CLEAR_USER_DATA } from './types.js';
+import{ USER_LOGIN, NEW_USER, ERROR, CLEAR_MESSAGE, CLEAR_USER_DATA } from './types.js';
 
 export const newUser = (user) => dispatch => {
     if(user.organizer === "true") {
@@ -17,7 +17,7 @@ export const newUser = (user) => dispatch => {
       .then(res => {
           if(!res.success) {
             dispatch({
-                type: USER_ERROR,
+                type: ERROR,
                 payload: res
             })
           }
@@ -46,7 +46,7 @@ export const loginUser = (user) => dispatch => {
     .then(res => {
       if(!res.success) {
         dispatch({
-          type: USER_ERROR,
+          type: ERROR,
           payload: res
         })
       }
@@ -58,7 +58,7 @@ export const loginUser = (user) => dispatch => {
     })
     .catch(error => {
       dispatch({
-        type: USER_ERROR,
+        type: ERROR,
         payload: error
       })
     })

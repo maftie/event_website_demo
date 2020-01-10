@@ -1,9 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+
 import { fetchEvents, buyTicket } from '../../actions/eventActions';
+import { clearUserMessage } from '../../actions/userActions';
+import { clearEventMessage } from '../../actions/eventActions';
+import { clearErrors } from '../../actions/errorActions';
+
 import  CreateEventButton from './CreateEventButtonComponent';
 
 class Events extends Component {
+    componentWillUnmount() {
+        this.props.clearMessages();
+    }
     state = {
         name: '',
         amount: 0
@@ -100,7 +108,12 @@ const mapStateTopProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     fetchEvents: () => dispatch(fetchEvents()),
-    buyTicket: purchaseInfo => dispatch(buyTicket(purchaseInfo))
+    buyTicket: purchaseInfo => dispatch(buyTicket(purchaseInfo)),
+    clearMessages: () => {
+        clearUserMessage(dispatch);
+        clearEventMessage(dispatch);
+        clearErrors(dispatch);
+      }
 })
 
 export default connect(mapStateTopProps, mapDispatchToProps)(Events);
